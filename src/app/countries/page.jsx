@@ -3,11 +3,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-import Image from "next/image";
+import Image from "next/image"
+import { toast, ToastContainer } from "react-toastify";;
 import CountryCard from "../../components/CountryCard";
 import CountryModal from "../../components/CountryModal";
 import Loading from "../../components/Loading";
 import styles from "./Countries.module.css";
+import "react-toastify/dist/ReactToastify.css";
 import "antd/dist/reset.css"; 
 import { Pagination } from 'antd';
 
@@ -47,11 +49,15 @@ export default function Countries() {
     (currentPage - 1) * itemsPerPage, 
     currentPage * itemsPerPage
 );
-
   const resetFilter = () => fetchCountries();
 
   return (
     <div className={styles.container}>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+      />
       <h1>
       <Image className={styles.icon}
       src='/images/globo.png'
@@ -84,7 +90,12 @@ export default function Countries() {
             <CountryCard
               key={index}
               country={country}
-              onClick={() => setSelectedCountry(country)}
+              onClick={ () => {
+                setSelectedCountry(country);
+                toast.success(`Você clicou em ${country.translations.por.common}`, 
+)
+              }}
+              
             />
           ))
         )}
