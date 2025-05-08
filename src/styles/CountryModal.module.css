@@ -20,8 +20,27 @@
     padding: 20px;
 }
 
+.Country{
+    margin: 3% 0 3% 0 ;
+}
+
 .flag {
     width: 100%;
     height: auto;
     margin-bottom: 20px;
+}
+
+.CountryName{
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+}
+
+.icon {
+    margin-right: 8px;
+}
+
+.content{
+
+    margin-bottom: 0.5rem;
 }

@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+import Image from "next/image";
 import CountryCard from "../../components/CountryCard";
 import CountryModal from "../../components/CountryModal";
 import Loading from "../../components/Loading";
@@ -42,7 +43,14 @@ export default function Countries() {
 
   return (
     <div className={styles.container}>
-      <h1>Lista de Países do Mundo</h1>
+      <h1>
+      <Image className={styles.icon}
+        src='/images/globo.png'
+        alt='Icone' 
+        width={25} 
+        height={25}
+      /> 
+      Lista de Países do Mundo</h1>
       <div>
         {regions.map((region) => (
           <button
