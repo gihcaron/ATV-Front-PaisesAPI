@@ -45,10 +45,10 @@ export default function Countries() {
     <div className={styles.container}>
       <h1>
       <Image className={styles.icon}
-        src='/images/globo.png'
-        alt='Icone' 
-        width={25} 
-        height={25}
+      src='/images/globo.png'
+      alt='Icone' 
+      width={25} 
+      height={25}
       /> 
       Lista de Países do Mundo</h1>
       <div>

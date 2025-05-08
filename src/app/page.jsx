@@ -1,4 +1,5 @@
 import React from "react";
+import Link from 'next/link';
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
@@ -29,9 +30,9 @@ export default function Home() {
                     <li>Skeleton</li>
                 </ul>
             </div>
-            <a href="/countries">
+            <Link href="/countries" prefetch={true}>
                 <button className={styles.button}>Acessar Países</button>
-            </a>
+            </Link>
         </div>
     );
 }
