@@ -4,7 +4,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: lightblue;
+    background-color: rgba(241,241,241,255);
+    font-family: var(--font-poppins);
 }
 
 .button {

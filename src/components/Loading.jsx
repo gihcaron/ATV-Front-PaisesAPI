@@ -10,6 +10,7 @@ export default function Loading() {
             alt="Loading"
             width={300}
             height={300}
+            unoptimized
             />
             <p>Carregando países...</p>
         </div>

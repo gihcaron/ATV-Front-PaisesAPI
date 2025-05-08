@@ -14,7 +14,14 @@ export default function CountyModel({ country, onClose }) {
                 height={200}
                 className={styles.flag}
                 />
-                <p>Nome Oficial: {country.translations.por.official}</p>
+                <p>    
+                <Image className={styles.icon}
+                src='/images/globo.png'
+                alt='Icone' 
+                width={15} 
+                height={15}
+                />   
+                Nome Oficial: {country.translations.por.official}</p>
                 <p>Capital: {country.capital || "Não tem"}</p>
                 <p>Continente: {country.region}</p>
                 <p>Sub-região: {country.subregion || "Não tem"}</p>
