@@ -22,6 +22,30 @@ export default function Countries() {
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [allCountries, setAllCountries] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  
+  useEffect(() => {
+    const fetchComCache = async () => {
+      const cacheKey = 'countryData';
+      const cache = sessionStorage.getItem(cacheKey);
+
+      if (cache) {
+        setCountries(JSON.parse(cache));
+        setIsLoading(false);
+        return;
+      }
+
+      try {
+        const resposta = await axios.get("https://restcountries.com/v3.1/all",);
+        setCountries(resposta.data);
+        sessionStorage.setItem(cacheKey, JSON.stringify(resposta.data));
+      } catch (erro) {
+        alert('Erro ao buscar os dados: ' + erro.message);
+      }
+    };
+
+    fetchComCache();
+  }, []);
+
 
   const fetchCountries = async (region = "") => {
     setIsLoading(true);
