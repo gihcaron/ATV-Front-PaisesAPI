@@ -7,11 +7,11 @@ import Image from "next/image"
 import { toast, ToastContainer } from "react-toastify";;
 import CountryCard from "../../components/CountryCard";
 import CountryModal from "../../components/CountryModal";
-import Loading from "../../components/Loading";
 import styles from "./Countries.module.css";
 import "react-toastify/dist/ReactToastify.css";
 import "antd/dist/reset.css"; 
 import { Pagination } from 'antd';
+import { Skeleton } from "antd";
 
 const regions = ["africa", "americas", "antarctic", "asia", "europe", "oceania"];
 
@@ -84,8 +84,14 @@ export default function Countries() {
 
       <div className={styles.cardContainer}>
         {isLoading ? (
-          <Loading />
+          <Skeleton
+            className={styles.skeleton}
+            active
+            paragraph={{ rows: 3 }} 
+            title={{ width: 200 }}
+          />
         ) : (
+
           paginatedCountries.map((country, index) => (
             <CountryCard
               key={index}
