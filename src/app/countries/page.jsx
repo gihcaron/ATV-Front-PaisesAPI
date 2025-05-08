@@ -8,11 +8,15 @@ import CountryCard from "../../components/CountryCard";
 import CountryModal from "../../components/CountryModal";
 import Loading from "../../components/Loading";
 import styles from "./Countries.module.css";
+import "antd/dist/reset.css"; 
+import { Pagination } from 'antd';
 
 const regions = ["africa", "americas", "antarctic", "asia", "europe", "oceania"];
 
 export default function Countries() {
   const [countries, setCountries] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10; 
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [allCountries, setAllCountries] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -38,6 +42,11 @@ export default function Countries() {
   useEffect(() => {
     fetchCountries();
   }, []);
+
+  const paginatedCountries =countries.slice (
+    (currentPage - 1) * itemsPerPage, 
+    currentPage * itemsPerPage
+);
 
   const resetFilter = () => fetchCountries();
 
@@ -66,11 +75,12 @@ export default function Countries() {
         </button>
       </div>
 
+
       <div className={styles.cardContainer}>
         {isLoading ? (
           <Loading />
         ) : (
-          countries.map((country, index) => (
+          paginatedCountries.map((country, index) => (
             <CountryCard
               key={index}
               country={country}
@@ -80,12 +90,22 @@ export default function Countries() {
         )}
       </div>
 
+      <Pagination  simple 
+      className={styles.pagination}
+      currentPage={currentPage}
+      onChange={(page) => setCurrentPage(page)}
+      total={countries.length}
+      
+       />
+
       {selectedCountry && (
         <CountryModal
           country={selectedCountry}
           onClose={() => setSelectedCountry(null)}
         />
       )}
+
+
     </div>
   );
 }
